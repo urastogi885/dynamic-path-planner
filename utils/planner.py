@@ -16,7 +16,10 @@ class PathPlanning:
         return np.sqrt((loc[0]-self.target[0])**2 + (loc[1]-self.target[1])**2)
 
     def move_robot(self):
-        pass
+        self.grid[self.robot[0]][self.robot[1]] = 0
+        min_dist_loc = self.get_next_move()
+        self.grid[self.robot[0]][self.robot[1]] = 2
+        return
 
     def get_next_move(self):
         min_dist = float('inf')
@@ -38,5 +41,6 @@ class PathPlanning:
                         self.distance[row][col] += self.get_target_dist((row, col))
 
             self.move_robot()
-
-
+            if self.robot == self.target:
+                print('Reached Target!!...')
+                break
