@@ -18,23 +18,26 @@ class Map:
         # Radius is same for all circles
         self.circle_radius = int(SCALING_FACTOR * 0.2)
         # Define centers of all circles
-        self.circle_centers = np.array([(self.width - 100, 50),
-                                        (300, self.height - 80),
-                                        (150, self.height - 250)],
-                                       dtype=np.int32)
+        self.circle_centers = np.array([(8, 1),
+                                        (6, 8.4),
+                                        (3, 5)],
+                                       dtype=np.int8)
+        self.scaled_centers = SCALING_FACTOR * np.array([(8, 1),
+                                                         (6, 8.4),
+                                                         (3, 5)])
         # Define empty world and add obstacles to it
-        self.map_img = self.draw_obstacles()
+        self.map_img = self.generate_check_image()
         # Get image to search for obstacles
-        self.check_img = self.generate_check_image()
+        self.check_img = self.draw_obstacles()
 
     def draw_circle(self, img, thresh=0):
         """
         Draw the 4 circular obstacles on the map-image
         :return: nothing
         """
-        for center in self.circle_centers:
+        for center in self.scaled_centers:
             # Draw the circle
-            cv2.circle(img, (center[0], center[1]), self.circle_radius + thresh, self.black, -1)
+            cv2.circle(img, (int(center[0]), int(center[1])), self.circle_radius + thresh, self.black, -1)
 
     def generate_check_image(self):
         """
@@ -42,10 +45,13 @@ class Map:
         :return: image with obstacle space expanded to distance threshold between robot and obstacle
         """
         # Get map with obstacles
-        check_img = self.map_img.copy()
-        # Erode map image for rigid robot
-        # self.draw_circle(check_img, self.thresh)
-
+        # Initialize empty grid
+        check_img = np.zeros((MAP_SIZE[0], MAP_SIZE[1]), dtype=np.int8)
+        # Mark obstacle locations
+        for center in self.circle_centers:
+            check_img[center[1]][center[0]] = -1
+        # Define target location
+        # check_img[9][6] = 1
         return check_img
 
     def draw_obstacles(self):
@@ -53,13 +59,13 @@ class Map:
         Draw map using half-plane equations
         :return: map-image with all obstacles
         """
-        self.map_img = cv2.imread('images/map.png')
-        if self.map_img is None:
-            self.map_img = np.zeros((self.height, self.width, 3), dtype=np.uint8)
+        self.check_img = cv2.imread('images/map.png')
+        if self.check_img is None:
+            self.check_img = np.zeros((self.height, self.width, 3), dtype=np.uint8)
             # Fill map-image with white color
-            self.map_img.fill(255)
+            self.check_img.fill(255)
             # Draw various obstacles on the map
-            self.draw_circle(self.map_img)
-            cv2.imwrite('images/map.png', self.map_img)
+            self.draw_circle(self.check_img)
+            cv2.imwrite('images/map.png', self.check_img)
 
-        return self.map_img
+        return self.check_img
