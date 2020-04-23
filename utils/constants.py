@@ -1,2 +1,4 @@
 # Define map size
-MAP_SIZE = 100, 100
+MAP_SIZE = 10, 10
+# Define scaling factor
+SCALING_FACTOR = 50
