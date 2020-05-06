@@ -1,6 +1,7 @@
 # Import necessary standard libraries
 import cv2
 import numpy as np
+from random import choice
 # Import necessary constants
 from utils.constants import *
 
@@ -22,13 +23,19 @@ class Map:
                                         (6, 8.4),
                                         (3, 5)],
                                        dtype=np.int8)
-        self.scaled_centers = SCALING_FACTOR * np.array([(8, 1),
-                                                         (6, 8.4),
-                                                         (3, 5)])
+        self.scaled_centers = SCALING_FACTOR * self.circle_centers.copy()
         # Define empty world and add obstacles to it
         self.map_img = self.generate_check_image()
         # Get image to search for obstacles
         self.check_img = self.draw_obstacles()
+
+    def update_scaled_centers(self):
+        """
+        Method to update scaled centers
+        Only to be called if obstacle centers have been changed
+        :return: nothing
+        """
+        pass
 
     def draw_circle(self, img, thresh=0):
         """
@@ -69,3 +76,18 @@ class Map:
             cv2.imwrite('images/map.png', self.check_img)
 
         return self.check_img
+
+    def update_obstacle_space(self):
+        """
+        Method to move obstacles around on the map
+        :return: map-image with updated positions of the obstacles
+        """
+        pass
+
+    def take_action(self, center_obstacle):
+        """
+        Method to change centers of the obstacles
+        :param center_obstacle: a tuple containing center of the obstacle
+        :return: a tuple containing new centers of the obstacle
+        """
+        pass
