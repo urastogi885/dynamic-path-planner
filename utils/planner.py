@@ -6,8 +6,8 @@ class PathPlanning:
 
     def __init__(self, grid, robot_loc, target_loc):
         self.grid = grid
-        self.robot = robot_loc
-        self.target = target_loc
+        self.robot = list(robot_loc)
+        self.target = list(target_loc)
         self.grid[self.robot[0], self.robot[1]] = 3
         self.grid[self.target[0], self.target[1]] = 2
         self.distance = np.full_like(self.grid,fill_value=float('inf'), dtype=float)
@@ -18,19 +18,22 @@ class PathPlanning:
         return np.sqrt((loc[0]-self.target[0])**2 + (loc[1]-self.target[1])**2)
 
     def move_robot(self):
-        self.grid[self.robot[0]][self.robot[1]] = 0
+        self.grid[self.robot[0]][self.robot[1]] = 1
         min_dist_loc = self.get_next_move()
-        self.grid[self.robot[0]][self.robot[1]] = 2
+        if 0 <= min_dist_loc[0] < self.grid.shape[0] and 0 <= min_dist_loc[1] < self.grid.shape[1]:
+            self.robot = min_dist_loc
+        self.grid[self.robot[0]][self.robot[1]] = 3
         return
 
     def get_next_move(self):
         min_dist = float('inf')
         min_dist_loc = self.robot
-        for row in range(-1, 1, 1):
-            for col in range(-1, 1, 1):
-                if min_dist > self.distance[self.robot[0]+row][self.robot[1]+col]:
-                    min_dist = self.distance[self.robot[0]+row][self.robot[1]+col]
-                    min_dist_loc = [self.robot[0]+row, self.robot[1]+col]
+        for row in range(-1, 2, 1):
+            for col in range(-1, 2, 1):
+                if 0 <= self.robot[0] + row < self.grid.shape[0] and 0 <= self.robot[1] + col < self.grid.shape[1]:
+                    if min_dist > self.distance[self.robot[0]+row][self.robot[1]+col]:
+                        min_dist = self.distance[self.robot[0]+row][self.robot[1]+col]
+                        min_dist_loc = [self.robot[0]+row, self.robot[1]+col]
         return min_dist_loc
 
     def get_dist(self, loc1, loc2):
@@ -64,7 +67,7 @@ class PathPlanning:
                         f_value = self.get_fvalue((row, col))
                         old_distance[row][col] = min([float('inf'), f_value])
             self.distance = old_distance
-            #self.move_robot()
+            self.move_robot()
 
             if self.robot == self.target:
                 print('Reached Target!!...')
