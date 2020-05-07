@@ -27,7 +27,7 @@ class Map:
         # Define empty world and add obstacles to it
         self.map_img = self.generate_map()
         # Get image to search for obstacles
-        self.check_img = self.draw_obstacles()
+        self.animation_img = self.draw_obstacles()
 
     def update_scaled_centers(self):
         """
@@ -64,16 +64,16 @@ class Map:
         Draw map using half-plane equations
         :return: map-image with all obstacles
         """
-        self.check_img = cv2.imread('images/map.png')
-        if self.check_img is None:
-            self.check_img = np.zeros((self.height, self.width, 3), dtype=np.uint8)
+        self.animation_img = cv2.imread('images/map.png')
+        if self.animation_img is None:
+            self.animation_img = np.zeros((self.height, self.width, 3), dtype=np.uint8)
             # Fill map-image with white color
-            self.check_img.fill(255)
+            self.animation_img.fill(255)
             # Draw various obstacles on the map
-            self.draw_circle(self.check_img)
-            cv2.imwrite('images/map.png', self.check_img)
+            self.draw_circle(self.animation_img)
+            cv2.imwrite('images/map.png', self.animation_img)
 
-        return self.check_img
+        return self.animation_img
 
     def update_obstacle_space(self):
         """
@@ -88,8 +88,8 @@ class Map:
             self.circle_centers[i] = self.take_action(action, center)
             self.map_img[self.circle_centers[i][1]][self.circle_centers[i][0]] = OBSTACLE_LOC_VALUE
         self.update_scaled_centers()
-        self.check_img.fill(255)
-        self.draw_circle(self.check_img)
+        self.animation_img.fill(255)
+        self.draw_circle(self.animation_img)
         return self.map_img
 
     @staticmethod
