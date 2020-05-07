@@ -22,8 +22,8 @@ class Map:
         self.circle_centers = np.array([(8, 1),
                                         (6, 8.4),
                                         (3, 5)],
-                                       dtype=np.int8)
-        self.scaled_centers = SCALING_FACTOR * self.circle_centers.copy()
+                                       dtype=np.int32)
+        self.scaled_centers = SCALING_FACTOR * self.circle_centers
         # Define empty world and add obstacles to it
         self.map_img = self.generate_map()
         # Get image to search for obstacles
@@ -35,8 +35,7 @@ class Map:
         Only to be called if obstacle centers have been changed
         :return: nothing
         """
-        self.scaled_centers = SCALING_FACTOR * self.circle_centers.copy()
-        pass
+        self.scaled_centers = SCALING_FACTOR * self.circle_centers
 
     def draw_circle(self, img, thresh=0):
         """
@@ -54,13 +53,10 @@ class Map:
         """
         # Get map with obstacles
         # Initialize empty grid
-        #check_img = np.zeros((MAP_SIZE[0], MAP_SIZE[1]), dtype=np.int8)
         check_img = np.full((MAP_SIZE[0], MAP_SIZE[1]), fill_value=FREE_SPACE_VALUE, dtype=np.int8)
         # Mark obstacle locations
         for center in self.circle_centers:
             check_img[center[1]][center[0]] = OBSTACLE_LOC_VALUE
-        # Define target location
-        # check_img[9][6] = 1
         return check_img
 
     def draw_obstacles(self):
@@ -91,6 +87,9 @@ class Map:
             action = randint(0, TOTAL_ACTIONS)
             self.circle_centers[i] = self.take_action(action, center)
             self.map_img[self.circle_centers[i][1]][self.circle_centers[i][0]] = OBSTACLE_LOC_VALUE
+        self.update_scaled_centers()
+        self.check_img.fill(255)
+        self.draw_circle(self.check_img)
         return self.map_img
 
     @staticmethod
