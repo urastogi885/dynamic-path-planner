@@ -18,3 +18,10 @@ FREE_SPACE_VALUE = 1
 OBSTACLE_LOC_VALUE = 0
 # Define max distance value in the distance grid
 MAX_DISTANCE = float('inf')
+# Defining robot BGR values in rendered map
+ROBOT_BGR = (0, 255, 0)
+# Defining target BGR values in rendered map
+TARGET_BGR = (0, 0, 255)
+# Defining free space BGR values in rendered map
+FREE_SPACE_BGR = (255, 255, 255)
+
