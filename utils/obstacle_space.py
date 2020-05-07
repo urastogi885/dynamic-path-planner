@@ -53,10 +53,11 @@ class Map:
         """
         # Get map with obstacles
         # Initialize empty grid
-        check_img = np.zeros((MAP_SIZE[0], MAP_SIZE[1]), dtype=np.int8)
+        #check_img = np.zeros((MAP_SIZE[0], MAP_SIZE[1]), dtype=np.int8)
+        check_img = np.full((MAP_SIZE[0], MAP_SIZE[1]), fill_value=FREE_SPACE_VALUE, dtype=np.int8)
         # Mark obstacle locations
         for center in self.circle_centers:
-            check_img[center[1]][center[0]] = -1
+            check_img[center[1]][center[0]] = OBSTACLE_LOC_VALUE
         # Define target location
         # check_img[9][6] = 1
         return check_img
