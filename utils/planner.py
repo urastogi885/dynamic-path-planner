@@ -58,6 +58,7 @@ class PathPlanning:
     def explore(self):
         # 2 - target, 1- empty, 0 - obstacles, 3- robot
         step = 0
+        #TODO: debug working of algorithm with dynamic environment (trouble in integration, not in algorithm
         while True:
             step += 1
             self.grid_obj.map_img = self.grid_obj.update_obstacle_space()

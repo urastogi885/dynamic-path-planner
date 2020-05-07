@@ -84,6 +84,7 @@ class Map:
         Method to move obstacles around on the map
         :return: map-image with updated positions of the obstacles
         """
+        #TODO: avoid obstacles to move over target or robot location
         for i in range(len(self.circle_centers)):
             center = self.circle_centers[i][0], self.circle_centers[i][1]
             self.map_img[center[1]][center[0]] = FREE_SPACE_VALUE
