@@ -13,7 +13,7 @@ class PathPlanning:
         self.grid[self.robot[0], self.robot[1]] = constants.ROBOT_LOC_VALUE
         self.grid[self.target[0], self.target[1]] = constants.TARGET_LOC_VALUE
         self.distance = np.full_like(self.grid, fill_value=constants.MAX_DISTANCE, dtype=float)
-        cv2.circle(self.grid_obj.check_img, (int(constants.SCALING_FACTOR*(self.target[1]+0.5)), int(constants.SCALING_FACTOR*(self.target[0]+0.5))), self.grid_obj.circle_radius, constants.TARGET_BGR, -1 )
+        cv2.circle(self.grid_obj.animation_img, (int(constants.SCALING_FACTOR*(self.target[1]+0.5)), int(constants.SCALING_FACTOR*(self.target[0]+0.5))), self.grid_obj.circle_radius, constants.TARGET_BGR, -1 )
         self.distance[self.target[0], self.target[1]] = 0
         #self.b_grid = np.full_like(self.grid, fill_value=0, dtype=int)
 
@@ -22,13 +22,13 @@ class PathPlanning:
 
     def move_robot(self):
         self.grid[self.robot[0]][self.robot[1]] = constants.FREE_SPACE_VALUE
-        self.grid_obj.check_img = self.grid_obj.draw_obstacles()
-        cv2.circle(self.grid_obj.check_img, (int(constants.SCALING_FACTOR*(self.robot[1]+0.5)), int(constants.SCALING_FACTOR*(self.robot[0]+0.5))), self.grid_obj.circle_radius, constants.FREE_SPACE_BGR, -1 )
+        self.grid_obj.animation_img = self.grid_obj.draw_obstacles()
+        cv2.circle(self.grid_obj.animation_img, (int(constants.SCALING_FACTOR*(self.robot[1]+0.5)), int(constants.SCALING_FACTOR*(self.robot[0]+0.5))), self.grid_obj.circle_radius, constants.FREE_SPACE_BGR, -1 )
         min_dist_loc = self.get_next_move()
         if 0 <= min_dist_loc[0] < self.grid.shape[0] and 0 <= min_dist_loc[1] < self.grid.shape[1]:
             self.robot = min_dist_loc
         self.grid[self.robot[0]][self.robot[1]] = constants.ROBOT_LOC_VALUE
-        cv2.circle(self.grid_obj.check_img, (int(constants.SCALING_FACTOR*(self.robot[1]+0.5)), int(constants.SCALING_FACTOR*(self.robot[0]+0.5))), self.grid_obj.circle_radius, constants.ROBOT_BGR, -1 )
+        cv2.circle(self.grid_obj.animation_img, (int(constants.SCALING_FACTOR*(self.robot[1]+0.5)), int(constants.SCALING_FACTOR*(self.robot[0]+0.5))), self.grid_obj.circle_radius, constants.ROBOT_BGR, -1 )
 
     def get_next_move(self):
         min_dist = constants.MAX_DISTANCE
@@ -63,7 +63,6 @@ class PathPlanning:
             step += 1
             self.grid_obj.map_img = self.grid_obj.update_obstacle_space()
             self.grid = np.copy(self.grid_obj.map_img)
-            self.grid_obj.update_scaled_centers()
             old_distance = np.copy(self.distance)
             for row in range(len(self.grid)):
                 for col in range(len(self.grid[0])):
@@ -79,7 +78,7 @@ class PathPlanning:
 
             self.grid_obj.map_img = np.copy(self.grid)
             #self.render_robot_target()
-            cv2.imshow('map', self.grid_obj.check_img)
+            cv2.imshow('map', self.grid_obj.animation_img)
             cv2.waitKey(250)
             if self.robot == self.target:
                 print('Reached Target!!...')
@@ -87,11 +86,11 @@ class PathPlanning:
                 break
 
     def render_robot_target(self):
-        cv2.circle(self.grid_obj.check_img, (int(constants.SCALING_FACTOR*(self.target[1]+0.5)), int(constants.SCALING_FACTOR*(self.target[0]+0.5))), self.grid_obj.circle_radius, constants.TARGET_BGR, -1 )
-        #cv2.imshow('map', self.grid_obj.check_img)
+        cv2.circle(self.grid_obj.animation_img, (int(constants.SCALING_FACTOR*(self.target[1]+0.5)), int(constants.SCALING_FACTOR*(self.target[0]+0.5))), self.grid_obj.circle_radius, constants.TARGET_BGR, -1 )
+        #cv2.imshow('map', self.grid_obj.animation_img)
         #cv2.waitKey(0)
-        cv2.circle(self.grid_obj.check_img, (int(constants.SCALING_FACTOR*(self.robot[1]+0.5)), int(constants.SCALING_FACTOR*(self.robot[0]+0.5))), self.grid_obj.circle_radius, constants.ROBOT_BGR, -1 )
-        #cv2.imshow('map', self.grid_obj.check_img)
+        cv2.circle(self.grid_obj.animation_img, (int(constants.SCALING_FACTOR*(self.robot[1]+0.5)), int(constants.SCALING_FACTOR*(self.robot[0]+0.5))), self.grid_obj.circle_radius, constants.ROBOT_BGR, -1 )
+        #cv2.imshow('map', self.grid_obj.animation_img)
         #cv2.waitKey(0)
 
 if __name__=="__main__":
