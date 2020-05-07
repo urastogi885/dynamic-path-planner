@@ -24,4 +24,3 @@ ROBOT_BGR = (0, 255, 0)
 TARGET_BGR = (0, 0, 255)
 # Defining free space BGR values in rendered map
 FREE_SPACE_BGR = (255, 255, 255)
-
