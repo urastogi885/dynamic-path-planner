@@ -35,6 +35,7 @@ class Map:
         Only to be called if obstacle centers have been changed
         :return: nothing
         """
+        self.scaled_centers = SCALING_FACTOR * self.circle_centers.copy()
         pass
 
     def draw_circle(self, img, thresh=0):
@@ -85,10 +86,10 @@ class Map:
         """
         for i in range(len(self.circle_centers)):
             center = self.circle_centers[i][0], self.circle_centers[i][1]
-            self.map_img[center[1]][center[0]] = 0
+            self.map_img[center[1]][center[0]] = FREE_SPACE_VALUE
             action = randint(0, TOTAL_ACTIONS)
             self.circle_centers[i] = self.take_action(action, center)
-            self.map_img[self.circle_centers[i][1]][self.circle_centers[i][0]] = -1
+            self.map_img[self.circle_centers[i][1]][self.circle_centers[i][0]] = OBSTACLE_LOC_VALUE
         return self.map_img
 
     @staticmethod
