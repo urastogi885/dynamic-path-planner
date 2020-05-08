@@ -26,6 +26,9 @@ class PathPlanning:
         return np.sqrt((loc[0]-self.target[0])**2 + (loc[1]-self.target[1])**2)
 
     def move_robot(self):
+        cv2.circle(self.grid_obj.animation_img, (int(constants.SCALING_FACTOR * (self.target[1] + 0.5)),
+                                                 int(constants.SCALING_FACTOR * (self.target[0] + 0.5))),
+                   self.grid_obj.circle_radius, constants.TARGET_BGR, -1)
         self.grid[self.robot[0]][self.robot[1]] = constants.FREE_SPACE_VALUE
         cv2.circle(self.grid_obj.animation_img, (int(constants.SCALING_FACTOR*(self.robot[1]+0.5)),
                                                  int(constants.SCALING_FACTOR*(self.robot[0]+0.5))),
