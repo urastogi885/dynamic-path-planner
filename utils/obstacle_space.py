@@ -80,12 +80,13 @@ class Map:
         Method to move obstacles around on the map
         :return: map-image with updated positions of the obstacles
         """
-        #TODO: avoid obstacles to move over target or robot location
         for i in range(len(self.circle_centers)):
             center = self.circle_centers[i][0], self.circle_centers[i][1]
             self.map_img[center[1]][center[0]] = FREE_SPACE_VALUE
             action = randint(0, TOTAL_ACTIONS)
-            self.circle_centers[i] = self.take_action(action, center)
+            new_center = self.take_action(action, center)
+            if new_center not in self.circle_centers:
+                self.circle_centers[i] = new_center
             self.map_img[self.circle_centers[i][1]][self.circle_centers[i][0]] = OBSTACLE_LOC_VALUE
         self.update_scaled_centers()
         self.animation_img.fill(255)
@@ -121,5 +122,7 @@ class Map:
         # Check for out of bounds condition
         if ((center_new[0] <= 0 or center_new[0] > MAP_SIZE[0] - 1) or
                 (center_new[1] <= 0 or center_new[1] > MAP_SIZE[1] - 1)):
+            center_new = center_obstacle
+        if center_new == (9, 6):
             center_new = center_obstacle
         return center_new
