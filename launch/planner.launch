@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+	    <arg name="use_sim_time" value="true"/>
+	    <arg name="world_name" value="$(find dynamic-path-planner)/worlds/map.world"/>
+  	</include>
+
+  	<include file="$(find dynamic-path-planner)/launch/multi_robots.launch"/>
+</launch>
