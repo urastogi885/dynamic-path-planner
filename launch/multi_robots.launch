@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <arg name="XA" default="0.0"/>
+  <arg name="YA" default="0.0"/>
+  <arg name="TA" default="0.0"/>
+
+  <arg name="XB" default="0.9"/>
+  <arg name="YB" default="3.0"/>
+  <arg name="TB" default="0.0"/>
+
+  <arg name="XC" default="1.4"/>
+  <arg name="YC" default="1.9"/>
+  <arg name="TC" default="0.7"/>
+
+  <arg name="XD" default="-1"/>
+  <arg name="YD" default="-1.9"/>
+  <arg name="TD" default="2.1"/>
+
+<!--
+  <arg name="base" value="$(optenv TURTLEBOT_BASE kobuki)"/>
+  <arg name="stacks" value="$(optenv TURTLEBOT_STACKS hexagons)"/> 
+  <arg name="3d_sensor" value="$(optenv TURTLEBOT_3D_SENSOR kinect)"/>
+-->
+
+  <group ns="/planner_robot">
+    <param name="tf_prefix" value="planner_tf" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_burger.urdf.xacro" />
+    <node name="spawn_planner" pkg="gazebo_ros" type="spawn_model" args="-urdf -model planner -x $(arg XA) -y $(arg YA) -z 0 -Y $(arg TA) -param robot_description" />
+  </group>
+
+  <group ns="/obstacle1">
+    <param name="tf_prefix" value="obstacle1_tf" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_waffle.urdf.xacro" />
+    <node name="spawn_obstacle1" pkg="gazebo_ros" type="spawn_model" args="-urdf -model obstacle1 -x $(arg XB) -y $(arg YB) -z 0 -Y $(arg TB) -param robot_description" />
+  </group>
+
+  <group ns="/obstacle2">
+    <param name="tf_prefix" value="obstacle2_tf" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_waffle.urdf.xacro" />
+    <node name="spawn_obstacle2" pkg="gazebo_ros" type="spawn_model" args="-urdf -model obstacle2 -x $(arg XC) -y $(arg YC) -z 0 -Y $(arg TC) -param robot_description" />
+  </group>
+
+  <group ns="/obstacle3">
+    <param name="tf_prefix" value="obstacle3_tf" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_waffle.urdf.xacro" />
+    <node name="spawn_obstacle3" pkg="gazebo_ros" type="spawn_model" args="-urdf -model obstacle3 -x $(arg XD) -y $(arg YD) -z 0 -Y $(arg TD) -param robot_description" />
+  </group>
+
+  <!--
+  <node
+    pkg="multi_turtle"
+    type="turtle_move.py"
+    name="turtle_move"
+    output="screen"
+   />
+
+  <node
+    pkg="multi_turtle"
+    type="mangu_move.py"
+    name="mangu_move"
+    output="screen"
+   />
+
+  <node
+    pkg="multi_turtle"
+    type="meenu_move.py"
+    name="meenu_move"
+    output="screen"
+   /> -->
+
+</launch>
