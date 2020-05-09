@@ -77,8 +77,8 @@ class PathPlanning:
         waypoints = []
         while True:
             step += 1
-            #self.grid_obj.map_img = self.grid_obj.update_obstacle_space()
-            #self.grid = np.copy(self.grid_obj.map_img)
+            self.grid_obj.map_img = self.grid_obj.update_obstacle_space()
+            self.grid = np.copy(self.grid_obj.map_img)
             old_distance = np.copy(self.distance)
             for row in range(len(self.grid)):
                 for col in range(len(self.grid[0])):
@@ -101,5 +101,7 @@ class PathPlanning:
                 print('Reached Target!!...')
                 self.video_output.release()
                 np.save('waypoints.npy', waypoints)
+                for key in self.grid_obj.obstacles.keys():
+                    np.save(key, self.grid_obj.obstacles[key])
                 # cv2.waitKey(0)
                 break
