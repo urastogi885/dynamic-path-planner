@@ -4,16 +4,16 @@
   <arg name="YA" default="-0.2"/>
   <arg name="TA" default="4.71"/>
 
-  <arg name="XB" default="-2.5"/>
-  <arg name="YB" default="-0.5"/>
+  <arg name="XB" default="-4.25"/>
+  <arg name="YB" default="-0.75"/>
   <arg name="TB" default="0.0"/>
 
-  <arg name="XC" default="-3"/>
-  <arg name="YC" default="-3"/>
+  <arg name="XC" default="-1.75"/>
+  <arg name="YC" default="-2.75"/>
   <arg name="TC" default="0.7"/>
 
-  <arg name="XD" default="-1"/>
-  <arg name="YD" default="-1.9"/>
+  <arg name="XD" default="-3.25"/>
+  <arg name="YD" default="-4.25"/>
   <arg name="TD" default="2.1"/>
 
 <!--
