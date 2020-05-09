@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <launch>
-  <arg name="XA" default="0.0"/>
-  <arg name="YA" default="0.0"/>
-  <arg name="TA" default="0.0"/>
+  <arg name="XA" default="-0.2"/>
+  <arg name="YA" default="-0.2"/>
+  <arg name="TA" default="4.71"/>
 
-  <arg name="XB" default="0.9"/>
-  <arg name="YB" default="3.0"/>
+  <arg name="XB" default="-2.5"/>
+  <arg name="YB" default="-0.5"/>
   <arg name="TB" default="0.0"/>
 
-  <arg name="XC" default="1.4"/>
-  <arg name="YC" default="1.9"/>
+  <arg name="XC" default="-3"/>
+  <arg name="YC" default="-3"/>
   <arg name="TC" default="0.7"/>
 
   <arg name="XD" default="-1"/>

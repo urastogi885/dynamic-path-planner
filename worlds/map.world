@@ -86,40 +86,40 @@
       <wall_time>1586275936 644116752</wall_time>
       <iterations>165841</iterations>
       <model name='grey_wall'>
-        <pose frame=''>0 -5.1 -1.1 0 -0 0</pose>
+        <pose frame=''>-2.5 -5.1 -1.1 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>0 -5.1 0.3 0 -0 0</pose>
+          <pose frame=''>-2.5 -5.1 0.3 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='grey_wall_0'>
-        <pose frame=''>5.1 0 -1.1 0 -0 1.57</pose>
+        <pose frame=''>0 -2.5 -1.1 0 -0 1.57</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>5.1 0 0.3 0 -0 1.57</pose>
+          <pose frame=''>0 -2.5 0.3 0 -0 1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='grey_wall_0_clone'>
-        <pose frame=''>-5.1 0 -1.1 0 -0 1.57</pose>
+        <pose frame=''>-5.1 -2.5 -1.1 0 -0 1.57</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>-5.1 0 0.3 0 -0 1.57</pose>
+          <pose frame=''>-5.1 -2.5 0.3 0 -0 1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='grey_wall_clone'>
-        <pose frame=''>0 5.1 -1.1 0 -0 0</pose>
+        <pose frame=''>-2.5 0 -1.1 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>0 5.1 0.3 0 -0 0</pose>
+          <pose frame=''>-2.5 0 0.3 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -153,7 +153,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>10.2 0.1 0.5</size>
+              <size>5.1 0.1 0.5</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -174,7 +174,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>10.2 0.1 0.5</size>
+              <size>5.1 0.1 0.5</size>
             </box>
           </geometry>
           <material>
@@ -198,7 +198,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>10.2 0.1 0.5</size>
+              <size>5.1 0.1 0.5</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -219,7 +219,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>10.2 0.1 0.5</size>
+              <size>5.1 0.1 0.5</size>
             </box>
           </geometry>
           <material>
@@ -243,7 +243,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>10.2 0.1 0.5</size>
+              <size>5.1 0.1 0.5</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -264,7 +264,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>10.2 0.1 0.5</size>
+              <size>5.1 0.1 0.5</size>
             </box>
           </geometry>
           <material>
@@ -288,7 +288,7 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>10.2 0.1 0.5</size>
+              <size>5.1 0.1 0.5</size>
             </box>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -309,7 +309,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <box>
-              <size>10.2 0.1 0.5</size>
+              <size>5.1 0.1 0.5</size>
             </box>
           </geometry>
           <material>
