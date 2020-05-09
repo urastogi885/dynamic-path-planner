@@ -1,0 +1,7 @@
+ <launch>
+   <!-- send table urdf to param server -->
+   <param name="block_description" command="$(find xacro)/xacro.py $(find dynamic-path-planner)/urdf/block.urdf" />
+ 
+   <!-- push table_description to factory and spawn robot in gazebo -->
+   <node name="spawn_block" pkg="gazebo_ros" type="spawn_model" args="-urdf -param block_description -z 0.193 -x -0.25 -y -0.25 -model block" respawn="false" output="screen" />
+ </launch>
