@@ -143,7 +143,7 @@ def convertor(wayp, size=10):
     # getting x, y location
     for i in range(len(wayp)):
         x = - (wayp[i][0][1] + 0.25)
-        y = (wayp[i][0][0] + 0.25)
+        y = - (wayp[i][0][0] + 0.25)
         if wayp[i][1] is not None:
             cord_wayp.append((x, y))
             angle = wayp[i][1] * 0.785
