@@ -6,4 +6,11 @@
   	</include>
 
   	<include file="$(find dynamic-path-planner)/launch/multi_robots.launch"/>
+
+  	<node 
+    	name = "controller" 
+    	pkg = "dynamic-path-planner" 
+    	type = "controller.py"
+    	launch-prefix="bash -c 'sleep 7; $0 $@' "
+  	/>
 </launch>

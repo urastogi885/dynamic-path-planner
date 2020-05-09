@@ -25,11 +25,7 @@ include_directories(
   include
   ${catkin_INCLUDE_DIRS})
 
-#install(PROGRAMS
-#  scripts/planner.py
-#  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-#)
-
-# Build algo and main
-# add_executable(a-star-turtlebot scripts/keyboard.cpp)
-# target_link_libraries(a-star-turtlebot ${catkin_LIBRARIES})
+install(PROGRAMS
+  scripts/controller.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
