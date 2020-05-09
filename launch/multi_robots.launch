@@ -2,7 +2,7 @@
 <launch>
   <arg name="XA" default="-0.2"/>
   <arg name="YA" default="-0.2"/>
-  <arg name="TA" default="4.71"/>
+  <arg name="TA" default="3.14"/>
 
   <arg name="XB" default="-4.25"/>
   <arg name="YB" default="-0.75"/>
@@ -30,19 +30,19 @@
 
   <group ns="/obstacle1">
     <param name="tf_prefix" value="obstacle1_tf" />
-    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_waffle.urdf.xacro" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_burger.urdf.xacro" />
     <node name="spawn_obstacle1" pkg="gazebo_ros" type="spawn_model" args="-urdf -model obstacle1 -x $(arg XB) -y $(arg YB) -z 0 -Y $(arg TB) -param robot_description" />
   </group>
 
   <group ns="/obstacle2">
     <param name="tf_prefix" value="obstacle2_tf" />
-    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_waffle.urdf.xacro" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_burger.urdf.xacro" />
     <node name="spawn_obstacle2" pkg="gazebo_ros" type="spawn_model" args="-urdf -model obstacle2 -x $(arg XC) -y $(arg YC) -z 0 -Y $(arg TC) -param robot_description" />
   </group>
 
   <group ns="/obstacle3">
     <param name="tf_prefix" value="obstacle3_tf" />
-    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_waffle.urdf.xacro" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_burger.urdf.xacro" />
     <node name="spawn_obstacle3" pkg="gazebo_ros" type="spawn_model" args="-urdf -model obstacle3 -x $(arg XD) -y $(arg YD) -z 0 -Y $(arg TD) -param robot_description" />
   </group>
 
