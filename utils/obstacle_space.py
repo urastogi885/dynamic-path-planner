@@ -28,6 +28,8 @@ class Map:
         self.map_img = self.generate_map()
         # Get image to search for obstacles
         self.animation_img = self.draw_obstacles()
+        # save obstacle trajectories
+        self.obstacles = {'o1':[], 'o2':[], 'o3':[]}
 
     def update_scaled_centers(self):
         """
@@ -84,9 +86,12 @@ class Map:
             center = self.circle_centers[i][0], self.circle_centers[i][1]
             self.map_img[center[1]][center[0]] = FREE_SPACE_VALUE
             action = randint(0, TOTAL_ACTIONS)
-            new_center = self.take_action(action, center)
+            new_center, new_action = self.take_action(action, center)
             if new_center not in self.circle_centers:
                 self.circle_centers[i] = new_center
+                self.obstacles['o'+str(i+1)].append([new_center, new_action])
+            else:
+                self.obstacles['o'+str(i+1)].append([new_center, None])
             self.map_img[self.circle_centers[i][1]][self.circle_centers[i][0]] = OBSTACLE_LOC_VALUE
         self.update_scaled_centers()
         self.animation_img.fill(255)
@@ -123,6 +128,8 @@ class Map:
         if ((center_new[0] <= 0 or center_new[0] > MAP_SIZE[0] - 1) or
                 (center_new[1] <= 0 or center_new[1] > MAP_SIZE[1] - 1)):
             center_new = center_obstacle
+            action = None
         if center_new == (9, 6):
             center_new = center_obstacle
-        return center_new
+            action = None
+        return center_new, action
