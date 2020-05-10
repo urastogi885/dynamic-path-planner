@@ -6,8 +6,8 @@ SCALING_FACTOR = 50
 VELOCITY_OBSTACLE = 1   # unit/time-step
 # Define action space for the obstacle
 TOTAL_ACTIONS = 8
-ACTION_SPACE = {'up': 0, 'down': 1, 'left': 2, 'right': 3,
-                'top_left': 4, 'top_right': 5, 'bottom_left': 6, 'bottom_right': 7}
+ACTION_SPACE = {'up': 6, 'down': 2, 'left': 0, 'right': 4,
+                'top_left': 7, 'top_right': 5, 'bottom_left': 1, 'bottom_right': 3}
 # Define robot's value in the map grid
 ROBOT_LOC_VALUE = 3
 # Define target's value in the map grid
