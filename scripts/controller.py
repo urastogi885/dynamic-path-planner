@@ -100,8 +100,10 @@ def callback_odom(odom):
     # declaring object
     msg = Twist()
     global state_action
-    while state_action[way_n][1] is None:
+    if state_action[way_n][1] is None:
         way_n += 1
+        rospy.sleep(5)
+        return
     # current position stored
     current_pose = (odom.pose.pose.position.x, odom.pose.pose.position.y)
 
