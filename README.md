@@ -47,7 +47,12 @@ Gazebo on your system.
 
 ## Run Instructions
 
-- Extract the compressed project file in the ```src``` folder of your ROS workspace.
+- Clone this repository in your ROS workspace
+```
+cd ~/<ROS_Workspace>/src/
+git clone https://github.com/urastogi885/dynamic-path-planner
+```
+- You can also extract the compressed project file in the ```src``` folder of your ROS workspace.
 - Open the terminal, build the ROS package, and run the launch file:
 ```
 cd ~/<ROS_Workspace>
