@@ -1,4 +1,7 @@
 # Dynamic-Path-Planner
+[![Build Status](https://travis-ci.org/urastogi885/optimal-path-finder.svg?branch=master)](https://travis-ci.org/github/urastogi885/dynamic-path-planner)
+
+## Overview
 
 This project used a dynamic programming (DP) approach to provide a collision-free optimal path to the robot. It 
 implements the DP algorithm on differential-drive robot, namely, Turtlebot-3.
