@@ -5,35 +5,35 @@
 	    <arg name="world_name" value="$(find dynamic-path-planner)/worlds/map.world"/>
   	</include>
 
-  	<include file="$(find dynamic-path-planner)/launch/block.launch"/>
+  	<!--include file="$(find dynamic-path-planner)/launch/block.launch"/-->
   	<include file="$(find dynamic-path-planner)/launch/multi_robots.launch"/>
 
   	<node 
     	name = "controller" 
     	pkg = "dynamic-path-planner" 
     	type = "controller.py"
-    	launch-prefix="bash -c 'sleep 7; $0 $@' "
+    	launch-prefix="bash -c 'sleep 3; $0 $@' "
     />
 
     <node 
     	name = "o1" 
     	pkg = "dynamic-path-planner" 
     	type = "obstacle1.py"
-    	launch-prefix="bash -c 'sleep 7; $0 $@' "
+    	launch-prefix="bash -c 'sleep 3; $0 $@' "
     />
     
-    <!--node 
+    <node 
     	name = "o2" 
     	pkg = "dynamic-path-planner" 
     	type = "obstacle2.py"
-    	launch-prefix="bash -c 'sleep 7; $0 $@' "
+    	launch-prefix="bash -c 'sleep 3; $0 $@' "
     />
     
     <node 
     	name = "o3" 
     	pkg = "dynamic-path-planner" 
     	type = "obstacle3.py"
-    	launch-prefix="bash -c 'sleep 7; $0 $@' "
-    /-->
+    	launch-prefix="bash -c 'sleep 3; $0 $@' "
+    />
 
 </launch>

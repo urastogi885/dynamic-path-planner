@@ -1,4 +1,7 @@
-# Dynamic-Path-Planner
+# Dynamic Path Planner
+[![Build Status](https://travis-ci.org/urastogi885/optimal-path-finder.svg?branch=master)](https://travis-ci.org/github/urastogi885/dynamic-path-planner)
+
+## Overview
 
 This project used a dynamic programming (DP) approach to provide a collision-free optimal path to the robot. It 
 implements the DP algorithm on differential-drive robot, namely, Turtlebot-3.
@@ -16,7 +19,7 @@ The project was developed in various phases:
 
 The various GIF of each phase of testing can be found [here](https://github.com/urastogi885/dynamic-path-planner/tree/master/images).
 
-## Contributors
+## Team Members
 
 - [Umang Rastogi](https://github.com/urastogi885)
 - [Aman Virmani](https://github.com/AmanVirmani) 
@@ -60,7 +63,12 @@ Gazebo on your system.
 
 ## Run Instructions
 
-- Extract the compressed project file in the ```src``` folder of your ROS workspace.
+- Clone this repository in your ROS workspace
+```
+cd ~/<ROS_Workspace>/src/
+git clone https://github.com/urastogi885/dynamic-path-planner
+```
+- You can also extract the compressed project file in the ```src``` folder of your ROS workspace.
 - Open the terminal, build the ROS package, and run the launch file:
 ```
 cd ~/<ROS_Workspace>

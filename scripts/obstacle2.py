@@ -100,8 +100,10 @@ def callback_odom(odom):
     # declaring object
     msg = Twist()
     global state_action
-    while state_action[way_n][1] is None:
+    if state_action[way_n][1] is None:
         way_n += 1
+        rospy.sleep(5)
+        return
     # current position stored
     current_pose = (odom.pose.pose.position.x, odom.pose.pose.position.y)
 
@@ -142,8 +144,8 @@ def convertor(wayp, size=10):
 
     # getting x, y location
     for i in range(len(wayp)):
-        x = - (wayp[i][0][1] + 0.25)
-        y = - (wayp[i][0][0] + 0.25)
+        x = - (wayp[i][0][0] + 0.25)
+        y = - (wayp[i][0][1] + 0.25)
         if wayp[i][1] is not None:
             cord_wayp.append((x, y))
             angle = wayp[i][1] * 0.785
