@@ -3,6 +3,19 @@
 This project used a dynamic programming (DP) approach to provide a collision-free optimal path to the robot. It 
 implements the DP algorithm on differential-drive robot, namely, Turtlebot-3.
 
+<p align="center">
+  <img src="https://github.com/urastogi885/dynamic-path-planner/blob/master/images/gazebo_dynamic.gif">
+  <br><b>Figure 1 - Turtlebot-3 navigating in a dynamic environment using dynamic programming algorithm</b><br>
+</p>
+
+The project was developed in various phases:
+
+- The dynamic programming algorithm was tested in 2D static and dynamic environments.
+- 3D environments were developed using ROS and Gazebo.
+- The algorithm was tested in the 3D world with stationary as well as mobile obstacles.
+
+The various GIF of each phase of testing can be found [here](https://github.com/urastogi885/dynamic-path-planner/tree/master/images).
+
 ## Contributors
 
 - [Umang Rastogi](https://github.com/urastogi885)
