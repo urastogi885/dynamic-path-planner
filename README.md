@@ -1,5 +1,6 @@
 # Dynamic Path Planner
 [![Build Status](https://travis-ci.org/urastogi885/optimal-path-finder.svg?branch=master)](https://travis-ci.org/github/urastogi885/dynamic-path-planner)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/urastogi885/dynamic-path-planner/blob/master/LICENSE)
 
 ## Overview
 
