@@ -71,7 +71,7 @@ class PathPlanning:
                     min_f_value = f_value
         return min_f_value
 
-    def explore(self):
+    def explore(self, show_movement=False):
         # 2 - target, 1- empty, 0 - obstacles, 3- robot
         step = 0
         waypoints = []
@@ -95,13 +95,13 @@ class PathPlanning:
             self.grid_obj.map_img = np.copy(self.grid)
             for _ in range(250):
                 self.video_output.write(self.grid_obj.animation_img)
-            cv2.imshow('map', self.grid_obj.animation_img)
-            cv2.waitKey(250)
+            if show_exploration:
+                cv2.imshow('map', self.grid_obj.animation_img)
+                cv2.waitKey(250)
             if self.robot == self.target:
                 print('Reached Target!!...')
                 self.video_output.release()
                 np.save('waypoints.npy', waypoints)
                 for key in self.grid_obj.obstacles.keys():
                     np.save(key, self.grid_obj.obstacles[key])
-                # cv2.waitKey(0)
                 break
