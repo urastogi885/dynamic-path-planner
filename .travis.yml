@@ -1,12 +1,12 @@
-
 # Set OS to linux
 os: linux
+dist: bionic
 
 # Set the build language to Python
 language: python
 
 # Set the python version to 3.5
-python: 3.5
+python: 3.6
 
 before_install:
   - sudo apt-get update
@@ -14,8 +14,8 @@ before_install:
 # Install the library dependencies
 install:
   - sudo apt-get install python3
-  - pip3 install numpy opencv-python
+  - pip install numpy opencv-python
 
 # Run python scripts
 script:
-  - python3 main.py
+  - python main.py
