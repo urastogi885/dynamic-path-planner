@@ -95,7 +95,7 @@ class PathPlanning:
             self.grid_obj.map_img = np.copy(self.grid)
             for _ in range(250):
                 self.video_output.write(self.grid_obj.animation_img)
-            if show_exploration:
+            if show_movement:
                 cv2.imshow('map', self.grid_obj.animation_img)
                 cv2.waitKey(250)
             if self.robot == self.target:
