@@ -101,7 +101,8 @@ class PathPlanning:
             if self.robot == self.target:
                 print('Reached Target!!...')
                 self.video_output.release()
-                np.save('waypoints.npy', waypoints)
-                for key in self.grid_obj.obstacles.keys():
-                    np.save(key, self.grid_obj.obstacles[key])
+                if show_movement:
+                    np.save('waypoints.npy', waypoints)
+                    for key in self.grid_obj.obstacles.keys():
+                        np.save(key, self.grid_obj.obstacles[key])
                 break
